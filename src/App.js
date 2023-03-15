@@ -1,25 +1,19 @@
-import {React, useState} from 'react';
+import {React, useState, createRef} from 'react';
 import Header from './components/Layouts/Header';
 import Modal from './components/UI/Modal';
 
 
 function App() {
-  const [cartIsShown, setCartIsShown] = useState(false);
-
-  const showCart = () => {
-    setCartIsShown(true);
-  }
-
-  const hideCart = () => {
-    setCartIsShown(false);
-  }
+  const modalRef = createRef();
 
 
   return (
     <>
-      <Header onShowCard={showCart}/>
+      <Header modalContainer={modalRef} />
      <main>
-      {cartIsShown ? <Modal onCloseCard={hideCart}/> : null}
+       <div id={"modal"} ref={modalRef}>
+       </div>
+     
      </main>
     </>
   );
