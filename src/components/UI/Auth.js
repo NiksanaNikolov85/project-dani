@@ -1,8 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth,
-         signInWithEmailAndPassword,
-         connectAuthEmulator,
-         createUserWithEmailAndPassword } from "firebase/auth";
+import {
+    getAuth,
+    signOut,
+    signInWithEmailAndPassword,
+    connectAuthEmulator,
+    createUserWithEmailAndPassword } from "firebase/auth";
 import { showLoginError} from './ErrorLogin';
 
 const firebaseConfig = initializeApp(
@@ -40,6 +42,13 @@ export const createAccount = async (loginEmail, loginPassword) => {
     catch (error) {
         console.log(error.message, 4444444);
         showLoginError(error);
+    }
+}
+
+export const logOut = async () => {
+    try {const logOutData = await signOut(auth)}
+catch( error) {
+console.log('Izhod');
     }
 }
 
